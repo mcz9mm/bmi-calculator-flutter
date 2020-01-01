@@ -1,10 +1,12 @@
-import 'package:bmi_calculator/results_page.dart';
+import 'package:bmi_calculator/components/icon_content.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'results_page.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/bottom_button.dart';
+import 'package:bmi_calculator/components/round_icon_button.dart';
 
 enum Gender {
   male,
@@ -212,53 +214,16 @@ class _InputPageState extends State<InputPage> {
                 ],
               )
           ),
-          GestureDetector(
+          BottomButton(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return ResultsPage();
               }));
             },
-            child: Container(
-              child: Center(
-                child: Text(
-                  'CALCULATE',
-                  style: kLargeButtonTextStyle,
-                ),
-              ),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              padding: EdgeInsets.only(bottom: 20.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            ),
+            buttonTitle: 'CALCULATE',
           )
         ],
       ),
-    );
-  }
-}
-
-
-class RoundIconButton extends StatelessWidget {
-
-  RoundIconButton({@required this.icon, @required this.onPress});
-  final IconData icon;
-  final Function onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: onPress,
-      child: Icon(icon),
-      elevation: 6.0,
-      disabledElevation: 6.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-//      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)), //四角の角丸
-      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
